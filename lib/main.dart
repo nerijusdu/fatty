@@ -1,6 +1,8 @@
+import 'package:fatty/auth.dart';
 import 'package:fatty/steps_display.dart';
 import 'package:flutter/material.dart';
 import 'package:health/health.dart';
+import 'dart:io' show Platform;
 
 void main() {
   runApp(const MyApp());
@@ -74,18 +76,22 @@ class _MyHomePageState extends State<MyHomePage> {
     ));
   }
 
+  void login() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Column(
-        children: <Widget>[
-          StepsDisplay(steps: _steps, label: 'Steps today'),
-          StepsDisplay(steps: _totalSteps, label: 'Total steps')
-        ],
-      ),
+      // body: Column(
+      //   children: <Widget>[
+      //     StepsDisplay(steps: _steps, label: 'Steps today'),
+      //     StepsDisplay(steps: _totalSteps, label: 'Total steps'),
+      //     ElevatedButton(onPressed: login, child: const Text('Login')),
+      //   ],
+      // ),
+      body: const SocialAuth(),
       floatingActionButton: FloatingActionButton(
         onPressed: getHealthData,
         tooltip: 'Refresh',
